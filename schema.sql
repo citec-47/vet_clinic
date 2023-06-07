@@ -12,6 +12,18 @@ neutered boolean,
 weight_kg decimal
 );
 
-/* Day 2. */
+-- Second Project
 
 ALTER TABLE animals ADD COLUMN species VARCHAR(255);
+
+-- Third Project
+CREATE TABLE owners(
+    id serial PRIMARY KEY,
+    full_name text,
+    age int
+);
+
+CREATE TABLE species(
+    id serial PRIMARY KEY,
+    name text
+);
