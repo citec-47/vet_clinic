@@ -22,3 +22,8 @@ CREATE TABLE owners(
     full_name text,
     age int
 );
+
+CREATE TABLE species(
+    id serial PRIMARY KEY,
+    name text
+);
