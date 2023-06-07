@@ -27,3 +27,6 @@ CREATE TABLE species(
     id serial PRIMARY KEY,
     name text
 );
+
+ALTER TABLE animals
+DROP COLUMN species;
