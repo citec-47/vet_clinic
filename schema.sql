@@ -10,10 +10,10 @@ CREATE TABLE animals (
 
 );
 
--- Add a column species of type string to your animals table. 
+-- Adding  column call species of type string to my animals table. 
 ALTER TABLE animals ADD COLUMN species VARCHAR(100);
 
--- Create a table named owners: 
+-- Creating a table named owners: 
 CREATE TABLE owners (
     id SERIAL PRIMARY KEY,
     full_name VARCHAR(100) NOT NULL,
@@ -26,7 +26,7 @@ CREATE TABLE species (
     species_name VARCHAR(100) NOT NULL
 );
 
--- Modify animals table , set as autoincremented PRIMARY KEY
+-- Modifying animals table , set as autoincremented PRIMARY KEY
 
 CREATE TABLE new_table (
   id SERIAL PRIMARY KEY,
@@ -38,7 +38,7 @@ CREATE TABLE new_table (
   species VARCHAR(100) NOT NULL
 );
 
--- Copy data from the old table to the new table
+-- Copying data from the old table to the new table
 INSERT INTO new_table (animal_name, date_of_birth, escape_attempts, neutered, weight_kg, species)
 SELECT animal_name, date_of_birth, escape_attempts, neutered, weight_kg, species
 FROM animals;
@@ -53,23 +53,24 @@ ALTER TABLE new_table RENAME TO animals;
 ALTER TABLE animals
 DROP COLUMN species;
 
--- Add column species_id which is a foreign key referencing species table
+-- Adding column species_id which is a foreign key referencing species table
   
 ALTER TABLE animals
 ADD COLUMN species_id INT;
 
     -- Then add foreign key constraint
+
 ALTER TABLE animals
 ADD CONSTRAINT fk_species
 FOREIGN KEY(species_id) 
 REFERENCES species(id);
 
--- Add column owner_id which is a foreign key referencing the owners table
+-- Adding column owner_id which is a foreign key referencing the owners table
 
 ALTER TABLE animals
 ADD COLUMN owners_id INT;
 
-    -- Then add foreign key constraint
+    -- adding foreign key constraint
 ALTER TABLE animals
 ADD CONSTRAINT fk_owners
 FOREIGN KEY(owners_id) 

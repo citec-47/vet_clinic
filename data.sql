@@ -1,3 +1,4 @@
+-- Day Three
 -- Insert data to animals table
 INSERT INTO animals (animal_name, date_of_birth, escape_attempts, neutered, weight_kg)
 VALUES ('Agumon', '2020-02-03', 0, true, 10.23),
@@ -46,21 +47,25 @@ SET owners_id = 1
 WHERE animal_name = 'Agumon';
 
   -- Jennifer Orwell owns Gabumon and Pikachu.
+
 UPDATE animals
 SET owners_id = 2
 WHERE animal_name IN ('Gabumon', 'Pikachu');
 
 -- Bob owns Devimon and Plantmon.
+
 UPDATE animals
 SET owners_id = 3
 WHERE animal_name IN ('Devimon', 'Plantmon');
 
 -- Melody Pond owns Charmander, Squirtle, and Blossom.
+
 UPDATE animals
 SET owners_id = 4
 WHERE animal_name IN ('Charmander', 'Squirtle', 'Blossom');
 
 -- Dean Winchester owns Angemon and Boarmon.
+
 UPDATE animals
 SET owners_id = 5
 WHERE animal_name IN ('Angemon', 'Boarmon');
