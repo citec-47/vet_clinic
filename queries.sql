@@ -64,43 +64,44 @@ ROLLBACK;
 BEGIN TRANSACTION;
 DELETE FROM animals WHERE date_of_birth > '2022-01-01';
 
--- Create a savepoint for this transactions.
+-- Create a savepoint for the transaction.
 SAVEPOINT animals_savepoint;
 
--- Updating all animals' weight to be their weight multiplied by -1.
+-- Update all animals' weight to be their weight multiplied by -1.
 UPDATE animals
 SET weight_kg = weight_kg * -1;
 
--- Rollback or save to the savepoint
+-- Rollback to the savepoint
 ROLLBACK TO animals_savepoint;
 
--- Updating all animals' weights that are negative to be their weight multiplied by -1.
+-- Update all animals' weights that are negative to be their weight multiplied by -1.
 UPDATE animals
 SET weight_kg = weight_kg * -1
 WHERE weight_kg < 0;
 
--- Commit transaction
+-- Commit the transaction
 COMMIT;
 
--- Amount of animals there?
+-- How many animals are there?
 SELECT COUNT(animal_name) FROM animals;
 
--- animals which have never tried to escape?
+-- How many animals have never tried to escape?
 SELECT COUNT(animal_name) FROM animals WHERE escape_attempts = 0;
 
--- average weight of animals?
+-- What is the average weight of animals?
 SELECT AVG(weight_kg) FROM animals;
 
--- Which records the most escapes, neutered or not neutered animals?
+-- Who escapes the most, neutered or not neutered animals?
 SELECT neutered, SUM(escape_attempts)
 FROM animals
 GROUP BY neutered
 ORDER BY SUM(escape_attempts) DESC;
--- Neutered animals that escaped the most
+-- Neutered animals escape the most
 
--- What is the minimum and maximum weight of animals?
+-- What is the minimum and maximum weight of each type of animal?
 SELECT Min(weight_kg), MAX(weight_kg) FROM animals;
 
+-- Min-Weight is 5.kg and Max-weight is 45kg
 
 -- What is the average number of escape attempts per animal type of those born between 1990 and 2000?
 SELECT species, AVG(escape_attempts)
@@ -150,4 +151,82 @@ FROM animals
 JOIN owners ON animals.owners_id = owners.id
 GROUP BY full_name
 ORDER BY animals_count DESC
+LIMIT 1;
+
+
+-- Who was the last animal seen by William Tatcher?
+SELECT animals.animal_name
+FROM visits
+JOIN vets ON visits.vet_id = vets.id
+JOIN animals ON visits.animal_id = animals.id
+WHERE vets.vet_name = 'William Tatcher'
+ORDER BY visits.visit_date DESC
+LIMIT 1;
+
+-- How many different animals did Stephanie Mendez see?
+SELECT COUNT(DISTINCT animals.id)
+FROM visits
+JOIN vets ON visits.vet_id = vets.id
+JOIN animals ON visits.animal_id = animals.id
+WHERE vets.vet_name = 'Stephanie Mendez';
+
+-- List all vets and their specialties, including vets with no specialties.
+SELECT vets.vet_name, species.species_name
+FROM vets
+LEFT JOIN specializations ON vets.id = specializations.vet_id
+LEFT JOIN species ON specializations.species_id = species.id
+ORDER BY vets.vet_name;
+
+-- List all animals that visited Stephanie Mendez between April 1st and August 30th, 2020.
+SELECT animals.animal_name
+FROM visits
+JOIN vets ON visits.vet_id = vets.id
+JOIN animals ON visits.animal_id = animals.id
+WHERE vets.vet_name = 'Stephanie Mendez'
+AND visits.visit_date >= '2020-04-01'
+AND visits.visit_date <= '2020-08-30';
+
+-- What animal has the most visits to vets?
+SELECT animals.animal_name, COUNT(*) AS visit_count
+FROM visits
+JOIN animals ON visits.animal_id = animals.id
+GROUP BY animals.animal_name
+ORDER BY visit_count DESC
+LIMIT 1;
+
+-- Who was Maisy Smith's first visit?
+SELECT animals.animal_name, visits.visit_date
+FROM visits
+JOIN vets ON visits.vet_id = vets.id
+JOIN animals ON visits.animal_id = animals.id
+WHERE vets.vet_name = 'Maisy Smith'
+ORDER BY visits.visit_date ASC
+LIMIT 1;
+
+-- Details for most recent visit: animal information, vet information, and date of visit.
+SELECT animals.animal_name, animals.date_of_birth, animals.escape_attempts, animals.neutered,
+animals.weight_kg,  visits.visit_date, vets.vet_name, vets.age, vets.date_of_graduation
+FROM visits
+JOIN animals ON visits.animal_id = animals.id
+JOIN vets ON visits.vet_id = vets.id
+ORDER BY visits.visit_date DESC
+LIMIT 1;
+
+-- How many visits were with a vet that did not specialize in that animal's species?
+SELECT COUNT(*) AS number_of_visits
+FROM visits
+JOIN vets ON visits.vet_id = vets.id
+JOIN animals ON visits.animal_id = animals.id
+LEFT JOIN specializations ON vets.id = specializations.vet_id AND animals.species_id = specializations.species_id
+WHERE specializations.id IS NULL;
+
+-- What specialty should Maisy Smith consider getting? Look for the species she gets the most.
+SELECT species.species_name, COUNT(*) AS number_of_visits
+FROM visits
+JOIN vets ON visits.vet_id = vets.id
+JOIN animals ON visits.animal_id = animals.id
+JOIN species ON animals.species_id = species.id
+WHERE vets.vet_name = 'Maisy Smith'
+GROUP BY species.species_name
+ORDER BY number_of_visits DESC
 LIMIT 1;
