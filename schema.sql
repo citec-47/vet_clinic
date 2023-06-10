@@ -1,4 +1,4 @@
-
+/*
 -- create table for animals
 CREATE TABLE animals (
     animal_name VARCHAR(100) NOT NULL,
