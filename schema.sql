@@ -2,7 +2,7 @@
 
 
 -- create a table animals
-
+/*
 CREATE TABLE animals (
     animal_name VARCHAR(100) NOT NULL,
     date_of_birth DATE NOT NULL,
@@ -109,3 +109,4 @@ CREATE TABLE visits (
   FOREIGN KEY (animal_id) REFERENCES animals (id) ON DELETE CASCADE,
   FOREIGN KEY (vet_id) REFERENCES vets (id) ON DELETE CASCADE
 );
+*/

@@ -1,5 +1,5 @@
 /*Queries that provide answers to the questions from all projects.*/
-
+/*
 -- Find all animals whose name ends in "mon".
 SELECT * FROM animals WHERE animal_name LIKE '%mon';
 
@@ -230,3 +230,4 @@ WHERE vets.vet_name = 'Maisy Smith'
 GROUP BY species.species_name
 ORDER BY number_of_visits DESC
 LIMIT 1;
+*/
