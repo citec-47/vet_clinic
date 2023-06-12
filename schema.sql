@@ -2,7 +2,7 @@
 
 
 -- create a table animals
-/*
+
 CREATE TABLE animals (
     animal_name VARCHAR(100) NOT NULL,
     date_of_birth DATE NOT NULL,
