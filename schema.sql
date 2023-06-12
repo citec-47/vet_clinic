@@ -1,4 +1,4 @@
-/* Database schema to keep the structure of entire database. */
+/* Database schema to keep the structure the entire database. */
 
 
 -- -create a table animals
