@@ -107,6 +107,12 @@ Install this project with:
 - Twitter: [@NdonyiMaurice](https://twitter.com/Ndonyi4)
 - LinkedIn: [NdonyiMaurice](https://www.linkedin.com/in/ndonyi-maurice-b5b49b22b/)
 
+👤 Ahmad Saeed
+
+- GitHub: [@ehmaddd](https://github.com/ehmaddd/)
+- Twitter: [@ehmaddd_pk](https://twitter.com/ehmaddd_pk)
+- LinkedIn: [@ehmaddd](https://www.linkedin.com/in/ehmaddd/)
+
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
 <!-- FUTURE FEATURES -->
