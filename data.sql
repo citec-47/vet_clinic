@@ -1,4 +1,3 @@
--- Day Three
 -- Insert data to animals table
 INSERT INTO animals (animal_name, date_of_birth, escape_attempts, neutered, weight_kg)
 VALUES ('Agumon', '2020-02-03', 0, true, 10.23),
@@ -47,26 +46,58 @@ SET owners_id = 1
 WHERE animal_name = 'Agumon';
 
   -- Jennifer Orwell owns Gabumon and Pikachu.
-
 UPDATE animals
 SET owners_id = 2
 WHERE animal_name IN ('Gabumon', 'Pikachu');
 
 -- Bob owns Devimon and Plantmon.
-
 UPDATE animals
 SET owners_id = 3
 WHERE animal_name IN ('Devimon', 'Plantmon');
 
 -- Melody Pond owns Charmander, Squirtle, and Blossom.
-
 UPDATE animals
 SET owners_id = 4
 WHERE animal_name IN ('Charmander', 'Squirtle', 'Blossom');
 
 -- Dean Winchester owns Angemon and Boarmon.
-
 UPDATE animals
 SET owners_id = 5
 WHERE animal_name IN ('Angemon', 'Boarmon');
 
+-- Insert data to vets table: 
+INSERT INTO vets (vet_name, age, date_of_graduation)
+VALUES ('William Tatcher', 45, '2000-04-23'),
+('Maisy Smith', 26, '2019-01-17'),
+('Stephanie Mendez', 64, '1981-05-04'),
+('Jack Harkness', 38, '2008-06-08');
+
+-- Insert data to specializations table
+INSERT INTO specializations ( vet_id, species_id)
+VALUES (1, 1),
+(3, 2),
+(3, 1),
+(4, 2);
+
+-- Insert data to visits table
+INSERT INTO visits (animal_id, vet_id, visit_date)
+VALUES (1, 1, '2020-05-24'),
+(1, 3, '2020-07-22'),
+(2, 4, '2021-02-02'),
+(5, 2, '2020-01-05'),
+(5, 2, '2020-03-08'),
+(5, 2, '2020-05-14'),
+(3, 3, '2021-05-04'),
+(6, 4, '2021-02-24'),
+(8, 2, '2019-12-21'),
+(8, 1, '2020-08-10'),
+(8, 2, '2021-04-7'),
+(10, 3, '2019-09-29'),
+(9, 4, '2020-10-03'),
+(9, 4, '2020-11-04'),
+(4, 2, '2019-01-24'),
+(4, 2, '2019-05-15'),
+(4, 2, '2020-02-27'),
+(4, 2, '2020-08-03'),
+(7, 3, '2020-05-24'),
+(7, 1, '2021-01-11');
