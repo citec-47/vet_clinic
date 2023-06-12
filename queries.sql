@@ -1,4 +1,4 @@
-/*Queries that provide answers to the questions from all projects.
+/*Queries that provide answers to the questions from all projects.*/
 
 -- Find all animals whose name ends in "mon".
 SELECT * FROM animals WHERE animal_name LIKE '%mon';
@@ -13,6 +13,7 @@ SELECT animal_name FROM animals WHERE neutered = true AND escape_attempts < 3;
 SELECT date_of_birth FROM animals WHERE animal_name IN ('Agumon', 'Pikachu');
 
 -- List name and escape attempts of animals that weigh more than 10.5kg
+
 SELECT animal_name, escape_attempts FROM animals WHERE weight_kg > 10.5;
 
 -- Find all animals that are neutered.
