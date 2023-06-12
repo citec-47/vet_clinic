@@ -1,7 +1,7 @@
 /* Database schema to keep the structure the entire database. */
 
 
--- -create a table animals
+-- -creating a table animals
 
 CREATE TABLE animals (
     animal_name VARCHAR(100) NOT NULL,
