@@ -111,7 +111,7 @@ Install this project with:
 
 - GitHub: [@ehmaddd](https://github.com/ehmaddd/)
 - Twitter: [@ehmaddd_pk](https://twitter.com/ehmaddd_pk)
-- LinkedIn: [ahmad-saeed-734174148](https://www.linkedin.com/in/ahmad-saeed-734174148/)
+- LinkedIn: [@ehmaddd](https://www.linkedin.com/in/ehmaddd/)
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
